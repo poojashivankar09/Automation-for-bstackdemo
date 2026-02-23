@@ -79,12 +79,15 @@ public class CheckoutTest extends BaseTest {
 			Assert.assertTrue(emptyMessage.isDisplayed());
 
 			test.pass("Empty cart message displayed. Add some products in the bag. Checkout not allowed.");
+			System.out.println("") ;
 
 		} catch (Exception e) {
 
 			test.fail("Test Failed: " + e.getMessage());
 			throw e;
 		}
+		
+		
 	}
 
 	

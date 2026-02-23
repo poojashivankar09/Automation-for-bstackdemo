@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import pages.LoginPage;
+import org.testng.Assert;
 
 public class LoginTest extends BaseTest {
 
@@ -22,9 +23,13 @@ public class LoginTest extends BaseTest {
 
         test.info("Entering valid credentials");
         login.login("demouser", "testingisfun99");
+        
+        System.out.println("Valid User Logged in Successfully") ;
 
         test.pass("Valid login executed successfully");
-    }
+       
+        
+        }
 
     @Test
     public void TC_002_invalidUserLogin() {
@@ -38,8 +43,12 @@ public class LoginTest extends BaseTest {
 
         test.info("Entering invalid credentials");
         login.login("wrong_user", "wrong_password");
+        
+        System.out.println("Invalid User Logged in Successfully") ;
 
         test.pass("Invalid login test executed");
+        
+        
     }
 
     @Test
@@ -57,6 +66,16 @@ public class LoginTest extends BaseTest {
         test.info("Clicking login button without entering credentials");
         driver.findElement(By.id("login-btn")).click();
 
+        // Wait for error message
+        By errorMsg = By.cssSelector(".api-error");   // verify locator once using inspect
+        wait.until(ExpectedConditions.visibilityOfElementLocated(errorMsg));
+
+        String actualMessage = driver.findElement(errorMsg).getText();
+
+        System.out.println("Error Message: " + actualMessage);
+        test.info("Error Message Displayed: " + actualMessage);
+
+        Assert.assertEquals(actualMessage, "Invalid Username");
+
         test.pass("Empty login test executed successfully");
-    }
-}
+    }}

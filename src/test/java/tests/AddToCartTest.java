@@ -34,6 +34,7 @@ public class AddToCartTest extends BaseTest {
                 By.cssSelector(".shelf-item__buy-btn"))).click();
 
         test.pass("Product added successfully");
+        System.out.println("Product is added to Cart Successfully");
     }
 
     @Test
@@ -68,6 +69,7 @@ public class AddToCartTest extends BaseTest {
         Assert.assertEquals(cartCount, "3");
 
         test.pass("Multiple products added successfully and verified");
+        System.out.println("Multiple products are added to Cart Successfully") ;
     }
 
     @Test
@@ -102,6 +104,8 @@ public class AddToCartTest extends BaseTest {
         Assert.assertEquals(cartCount, "0");
 
         test.pass("Cart is empty - Remove test passed");
+        
+        System.out.println("Added product removed from cart Successfully") ;
     }
 }
 
