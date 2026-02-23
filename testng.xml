@@ -1,0 +1,9 @@
+<suite name="BStack Demo Suite">
+	<test name="Functional Tests">
+		<classes>
+			<class name="tests.LoginTest" />
+			<class name="tests.AddToCartTest" />
+			<class name="tests.CheckoutTest" />
+		</classes>
+	</test>
+</suite>
